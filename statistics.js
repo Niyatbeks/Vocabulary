@@ -1,1 +1,0 @@
-async function updateStatistics(){const words=await getAllWords();const learned=words.filter(w=>w.learned).length;document.getElementById('totalCount').textContent=words.length;document.getElementById('learnedCount').textContent=learned;document.getElementById('notLearnedCount').textContent=words.length-learned;}
