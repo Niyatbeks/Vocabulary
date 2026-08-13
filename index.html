@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary</title>
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">V</span><div><h1>Vocabulary</h1><small>Personal Word Library</small></div></div>
+    <div class="top-actions">
+      <button id="languageBtn" class="ghost-btn">UZ</button>
+      <button id="themeBtn" class="icon-btn" title="Theme">☾</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats-grid">
+      <div class="stat-card"><span>📚</span><div><small data-i18n="total">Total words</small><strong id="totalCount">0</strong></div></div>
+      <div class="stat-card"><span>🟢</span><div><small data-i18n="learned">Learned</small><strong id="learnedCount">0</strong></div></div>
+      <div class="stat-card"><span>🔴</span><div><small data-i18n="notLearned">Not learned</small><strong id="notLearnedCount">0</strong></div></div>
+    </section>
+
+    <section class="panel add-panel">
+      <div class="section-head">
+        <div><h2 data-i18n="addWord">Add new word</h2><p data-i18n="addHint">Save a word and its translation to your private library.</p></div>
+      </div>
+      <form id="wordForm" class="word-form">
+        <label><span data-i18n="word">Word</span><input id="wordInput" required autocomplete="off" placeholder="e.g. aircraft"></label>
+        <label><span data-i18n="translation">Translation</span><input id="translationInput" required autocomplete="off" placeholder="e.g. samolyot"></label>
+        <button class="primary-btn" type="submit" data-i18n="save">Save word</button>
+      </form>
+      <div id="formMessage" class="form-message"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head list-head">
+        <div><h2 data-i18n="library">Library</h2><p data-i18n="newestFirst">Newest words are shown first.</p></div>
+        <div class="tabs">
+          <button class="tab active" data-filter="all" data-i18n="all">All</button>
+          <button class="tab" data-filter="notLearned" data-i18n="notLearned">Not learned</button>
+          <button class="tab" data-filter="learned" data-i18n="learned">Learned</button>
+        </div>
+      </div>
+      <div class="search-wrap"><span>⌕</span><input id="searchInput" data-i18n-placeholder="search" placeholder="Search word or translation..."></div>
+      <div id="wordList" class="word-list"></div>
+      <div id="emptyState" class="empty" hidden><div>📖</div><h3 data-i18n="empty">No words found</h3><p data-i18n="emptyHint">Add your first word above.</p></div>
+    </section>
+  </main>
+
+  <div id="editModal" class="modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="editModalTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="editModalTitle" data-i18n="editWord">Edit word</h2><button id="closeModal" class="icon-btn">×</button></div>
+      <form id="editForm">
+        <input type="hidden" id="editId">
+        <label><span data-i18n="word">Word</span><input id="editWord" required></label>
+        <label><span data-i18n="translation">Translation</span><input id="editTranslation" required></label>
+        <div class="modal-actions"><button type="button" id="cancelEdit" class="secondary-btn" data-i18n="cancel">Cancel</button><button class="primary-btn" data-i18n="saveChanges">Save changes</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/language.js"></script>
+  <script src="js/statistics.js"></script>
+  <script src="js/app.js"></script>
+  <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(console.error));}</script>
+</body>
+</html>

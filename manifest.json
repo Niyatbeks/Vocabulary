@@ -1,0 +1,13 @@
+{
+  "name": "My Vocabulary",
+  "short_name": "Vocabulary",
+  "description": "Personal offline vocabulary library",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#10131b",
+  "theme_color": "#4f46e5",
+  "lang": "uz",
+  "icons": []
+}
